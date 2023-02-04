@@ -7,6 +7,7 @@ open class Truck(val maxLoadCapacity: Int, val parkingTime: Long) {
     open fun loadedTruck() {}
 
     open fun unLoadedTruck() {
+        println("")
 
     }
 
