@@ -29,16 +29,4 @@ open class Truck(val maxLoadCapacity: Int, val parkingTime: Long) {
         }
     }
 
-
-
-
-//    open class TruckType : Truck(0, 5) {
-//        class Hi : TruckType()
-//        class Medium : TruckType()
-//        class Small : TruckType()
-//
-//    }
-
-
-
 }

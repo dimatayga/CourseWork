@@ -12,10 +12,16 @@ class DistributionCenter(
     private val loadingPorts =
         MutableList<Truck?>(numberOfLoadingPorts) { null }
 
+    private val storage = ArrayList<Product>()
+
+    fun unload(truck: Truck) {
 
 
+    }
 
+    fun upload(truck: Truck) {
 
+    }
 
 
 }
