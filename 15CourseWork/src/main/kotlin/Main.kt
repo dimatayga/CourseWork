@@ -1,30 +1,27 @@
 import GeneratorTruck.unLoadedTruck
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
+import kotlinx.coroutines.channels.produce
 
 
 suspend fun main() = coroutineScope {
+    println("Start")
+    val get = unLoadedTruck()
+    get.consumeEach { truck -> println("Truck Random  $truck") }
 
-//    val get = unLoadedTruck()
-//    get.consumeEach { truck -> println("Truck Random  $truck") }
-//    println("Start")
-//    delay(100)
-//    yield()
-//    println("End")
-for (i in 1..50) {
-    val storage = Truck(0, 0).getProductFromStorage(Product("k",
-        foodOrNot = false,
-        breakingCargo = false,
-        weight = 1.1,
-        timeLoading = 1
-    ))
-    println(storage)
+    //delay(100)
+    cancel()
+    println("End")
+
+//   runBlocking {
+//       val storage: Truck = TruckHighLoad()
+//       storage.getProductFromStorage(rightProduct = null)
+//       println(storage)
+//   }
 }
 
 
 
 
 
-}
+
