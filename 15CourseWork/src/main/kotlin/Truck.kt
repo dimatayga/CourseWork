@@ -22,6 +22,7 @@ open class Truck(val maxLoadCapacity: Int, val parkingTime: Long) {
         mutex.withLock {
             if (rightProduct in storageArea) {
                 storageArea.remove(rightProduct)
+                println("товар ${rightProduct?.name}")
                 return rightProduct
             }
             return null

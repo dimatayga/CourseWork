@@ -1,9 +1,6 @@
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.produce
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlin.random.Random
 import kotlin.random.nextInt
 
@@ -13,7 +10,7 @@ object GeneratorTruck {
         // var maxLoadCapacity = 10000
         //  var parkingTime: Long = 700
         when ((1..3).random()) {
-            1 -> TruckHighLoad().create()
+            1 -> TruckHighLoad().create(Truck(0,0))
             2 -> TruckMediumLoad().create()
             3 -> TruckSmallLoad().create()
         }
@@ -32,12 +29,18 @@ object GeneratorTruck {
                 2 -> TruckMediumLoad()
                 else -> TruckHighLoad()
             }
+            //yield()
             truck.getProductFromStorage(rightProduct = null)
             // truck.fillRandomGoods()
             send(truck)
-            delay(1)
+            delay(10)
+
 
         }
+        unLoadedTruck().cancel()
+        yield()
+        println("Stop generator")
+
 
     }
 
